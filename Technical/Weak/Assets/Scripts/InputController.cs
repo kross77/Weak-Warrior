@@ -14,27 +14,33 @@ public class InputController : MonoBehaviour
     }
 	public void Left()
     {
-	    if (_player.FrezeTime <= 0)
+	    if (_player.FrezeTime <= 0 && _player.Flipable)
 	    {
+            _animator.SetTrigger("isAttack"); 
             if (_player.FacingRight)
             {
-                _player.FacingRight = !_player.FacingRight;
-                _player.Flip();
+                if (_player.Flipable)
+                {
+                    _player.Flip();
+                }
             }
-            _animator.SetTrigger("isAttack");     
+                
 	    }  
     }
 
     public void Right()
     {
-        if (_player.FrezeTime <= 0)
+        if (_player.FrezeTime <= 0 && _player.Flipable)
         {
+            _animator.SetTrigger("isAttack");
             if (!_player.FacingRight)
             {
-                _player.FacingRight = !_player.FacingRight;
-                _player.Flip();
+                if (_player.Flipable)
+                {
+                    _player.Flip();
+                }
             }
-            _animator.SetTrigger("isAttack");
+            
         }
     }
 }

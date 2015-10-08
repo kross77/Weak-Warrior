@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour 
+public class Enemy : BaseEnemy 
 {
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.tag == "Player")
@@ -31,13 +32,7 @@ public class Enemy : MonoBehaviour
                 player.Hurt();
             }
         }
-        
     }
 
-    void Flip()
-    {
-        var theScale = gameObject.transform.localScale;
-        theScale.x = theScale.x*-1;
-        gameObject.transform.localScale = theScale;
-    }
+
 }

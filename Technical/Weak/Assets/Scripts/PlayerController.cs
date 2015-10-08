@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public bool IsHurt = false;
     public float ImmortalTime = 0;
     public float FrezeTime = 0f;
+    public bool Flipable = true;
     private Animator _anim;
 	// Use this for initialization
 	void Start () {
@@ -34,9 +35,11 @@ public class PlayerController : MonoBehaviour
 
     public void Flip()
     {
-        var theScalse = gameObject.transform.localScale;
-        theScalse.x = theScalse.x*-1;
-        gameObject.transform.localScale = theScalse;
+            var theScalse = gameObject.transform.localScale;
+            theScalse.x = theScalse.x * -1;
+            gameObject.transform.localScale = theScalse;
+            FacingRight = !FacingRight;
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
