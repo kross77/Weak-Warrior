@@ -1,8 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : BaseEnemy 
+public class Enemy : BaseEnemy
 {
+    public bool IsDead = false;
+    public float DieTime = 1f;
+    void Update()
+    {
+        if (IsDead)
+        {
+            DieTime -= Time.deltaTime;
+        }
+        if (DieTime <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,7 +33,8 @@ public class Enemy : BaseEnemy
 
         if (other.tag == "Sword")
         {
-            Destroy(gameObject);
+            gameObject.GetComponent<Animator>().SetTrigger("isDead");
+            IsDead = true;
         }
 
         if (other.tag == "HitBox")
