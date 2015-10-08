@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Enemy : BaseEnemy
 {
@@ -33,6 +34,8 @@ public class Enemy : BaseEnemy
 
         if (other.tag == "Sword")
         {
+            Score score = GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<Score>();
+            score.score++;
             gameObject.GetComponent<Animator>().SetTrigger("isDead");
             IsDead = true;
         }
