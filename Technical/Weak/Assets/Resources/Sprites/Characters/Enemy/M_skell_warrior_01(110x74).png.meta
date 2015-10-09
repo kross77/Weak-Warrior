@@ -1,9 +1,22 @@
 fileFormatVersion: 2
 guid: 61996f5ca52701a43bb96d2c9aed4c30
-timeCreated: 1444239452
+timeCreated: 1444384650
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: M_skell_warrior_01(110x74)_0
+    21300002: M_skell_warrior_01(110x74)_1
+    21300004: M_skell_warrior_01(110x74)_2
+    21300006: M_skell_warrior_01(110x74)_3
+    21300008: M_skell_warrior_01(110x74)_4
+    21300010: M_skell_warrior_01(110x74)_5
+    21300012: M_skell_warrior_01(110x74)_6
+    21300014: M_skell_warrior_01(110x74)_7
+    21300016: M_skell_warrior_01(110x74)_8
+    21300018: M_skell_warrior_01(110x74)_9
+    21300020: M_skell_warrior_01(110x74)_10
+    21300022: M_skell_warrior_01(110x74)_11
+    21300024: M_skell_warrior_01(110x74)_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,14 +43,14 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +61,137 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: M_skell_warrior_01(110x74)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 444
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_1
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 444
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 370
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_3
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 370
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 296
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_5
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 296
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 222
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_7
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 222
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 148
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_9
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 148
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 74
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_11
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 74
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: M_skell_warrior_01(110x74)_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 110
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 
