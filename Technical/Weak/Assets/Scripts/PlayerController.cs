@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
-    public int Health = 3;
-    public bool FacingRight = true;
-    public bool IsHit = false;
-    public bool IsHurt = false;
-    public float ImmortalTime = 0;
-    public float FrezeTime = 0f;
-    public bool Flipable = true;
+    public int health = 3;
+    public bool facingRight = true;
+    //public bool IsHit = false;
+    public bool isHurt = false;
+    public float immortalTime = 0;
+    public float frezeTime = 0f;
+    public bool flipable = true;
     private Animator _anim;
+    public List<Enemy> enemy; 
 	// Use this for initialization
 	void Start () {
 	    _anim = gameObject.GetComponent<Animator>();
@@ -19,15 +21,15 @@ public class PlayerController : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    if (FrezeTime > 0)
+	    if (frezeTime > 0)
 	    {
-	        FrezeTime -= Time.deltaTime;
+	        frezeTime -= Time.deltaTime;
 	    }
-	    if (ImmortalTime > 0)
+	    if (immortalTime > 0)
 	    {
-	        ImmortalTime -= Time.deltaTime;
+	        immortalTime -= Time.deltaTime;
 	    }
-	    if (FrezeTime < 0.2f)
+	    if (frezeTime < 0.2f)
 	    {
             _anim.SetBool("isMissed", false);
 	    }
@@ -38,39 +40,22 @@ public class PlayerController : MonoBehaviour
             var theScalse = gameObject.transform.localScale;
             theScalse.x = theScalse.x * -1;
             gameObject.transform.localScale = theScalse;
-            FacingRight = !FacingRight;
+            facingRight = !facingRight;
 
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Enemy" && !IsHit)
-        {
-            IsHit = true;
-        }
-        else if(other.tag == "Ground")
-        {
-            if (!IsHit)
-            {
-                gameObject.GetComponent<Animator>().SetBool("isMissed", true);
-                gameObject.GetComponent<Animator>().SetTrigger("isMiss");
-                FrezeTime = 0.6f;
-            }
-            else
-            {
-                IsHit = false;
-            }
-        }
     }
 
     public void Hurt()
     {
-        if (ImmortalTime <= 0)
+        if (immortalTime <= 0)
         {
-            Health--;
-            ImmortalTime = 1f;
+            health--;
+            immortalTime = 1f;
         }
-        if (Health < 0)
+        if (health < 0)
         {
             Restart();
 
@@ -82,5 +67,27 @@ public class PlayerController : MonoBehaviour
     {
         Application.LoadLevel(Application.loadedLevel);
         Debug.Log("restart");
+    }
+
+    void Clear()
+    {
+        if (enemy.Count == 0)
+        {
+            _anim.SetBool("isMissed", true);
+            _anim.SetTrigger("isMiss");
+            frezeTime = 0.7f;
+        }
+        else
+        {
+            for (int i = 0; i < enemy.Count; i++)
+            {
+                if (enemy[i])
+                {
+                    enemy[i].isDead = true;
+                    enemy[i].GetComponent<Animator>().SetTrigger("isDead");
+                }
+            }
+            enemy.Clear();
+        }
     }
 }

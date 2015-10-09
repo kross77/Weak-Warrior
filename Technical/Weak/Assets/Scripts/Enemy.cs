@@ -4,52 +4,21 @@ using UnityEngine.UI;
 
 public class Enemy : BaseEnemy
 {
-    public bool IsDead = false;
-    public float DieTime = 1f;
+    void Start()
+    {
+        _anim = gameObject.GetComponent<Animator>();
+        speed = Random.Range(1f, 4f);
+        health = 1;
+    }
     void Update()
     {
-        if (IsDead)
-        {
-            DieTime -= Time.deltaTime;
-        }
-        if (DieTime <= 0)
-        {
-            Destroy(gameObject);
-        }
+        Die();
+        Move();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void Attack()
     {
-        if (other.transform.tag == "Player")
-        {
-            gameObject.GetComponent<Animator>().SetTrigger("isAttack");
-            gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
-        
-        if (other.tag == "Ground")
-        {
-            Flip();
-            gameObject.GetComponent<Rigidbody2D>().velocity *= -1;
-        }
-
-        if (other.tag == "Sword")
-        {
-            Score score = GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<Score>();
-            score.score++;
-            gameObject.GetComponent<Animator>().SetTrigger("isDead");
-            IsDead = true;
-        }
-
-        if (other.tag == "HitBox")
-        {
-            Debug.Log("hitbox");
-            PlayerController player = other.GetComponentInParent<PlayerController>();
-            if (player)
-            {
-                player.Hurt();
-            }
-        }
+        base.Attack();
+        Debug.Log("attack");
     }
-
-
 }

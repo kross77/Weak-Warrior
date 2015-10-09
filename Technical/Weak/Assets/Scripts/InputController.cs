@@ -14,15 +14,12 @@ public class InputController : MonoBehaviour
     }
 	public void Left()
     {
-	    if (_player.FrezeTime <= 0 && _player.Flipable)
+	    if (_player.frezeTime <= 0 && _player.flipable)
 	    {
             _animator.SetTrigger("isAttack"); 
-            if (_player.FacingRight)
+            if (_player.facingRight)
             {
-                if (_player.Flipable)
-                {
-                    _player.Flip();
-                }
+                _player.Flip();
             }
                 
 	    }  
@@ -30,15 +27,12 @@ public class InputController : MonoBehaviour
 
     public void Right()
     {
-        if (_player.FrezeTime <= 0 && _player.Flipable)
+        if (_player.frezeTime <= 0 && _player.flipable)
         {
             _animator.SetTrigger("isAttack");
-            if (!_player.FacingRight)
+            if (!_player.facingRight)
             {
-                if (_player.Flipable)
-                {
-                    _player.Flip();
-                }
+                _player.Flip();
             }
             
         }
