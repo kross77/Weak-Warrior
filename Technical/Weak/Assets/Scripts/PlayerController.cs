@@ -12,11 +12,10 @@ public class PlayerController : MonoBehaviour
     public float frezeTime = 0f;
     public bool flipable = true;
     private Animator _anim;
-    public List<Enemy> enemy; 
+    public List<BaseEnemy> enemy; 
 	// Use this for initialization
 	void Start () {
 	    _anim = gameObject.GetComponent<Animator>();
-
 	}
 	
 	// Update is called once per frame
@@ -81,13 +80,16 @@ public class PlayerController : MonoBehaviour
         {
             for (int i = 0; i < enemy.Count; i++)
             {
-                if (enemy[i])
-                {
-                    enemy[i].isDead = true;
-                    enemy[i].GetComponent<Animator>().SetTrigger("isDead");
-                }
+                if(enemy[i])
+                    if (enemy[i].health <= 0)
+                    {
+
+                        enemy[i].isDead = true;
+                        enemy[i].GetComponent<Animator>().SetTrigger("isDead");
+                        Debug.Log("die");
+                    }
             }
-            enemy.Clear();
         }
+        enemy.Clear();
     }
 }

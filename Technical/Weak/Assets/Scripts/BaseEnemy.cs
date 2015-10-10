@@ -5,11 +5,12 @@ using UnityEngine.EventSystems;
 public class BaseEnemy : MonoBehaviour {
     public float speed;
     public int health;
-
+    public bool isMoving = true;
     public bool isDead = false;
     public float dieTime = 1f;
 
     public Animator _anim;
+    //public bool isRight = false;
 
 	// Use this for initialization
 	void Start ()
@@ -22,23 +23,26 @@ public class BaseEnemy : MonoBehaviour {
 	
 	}
 
-    protected void Flip()
+    public virtual void Flip(bool isRight)
     {
-        var theScale = gameObject.transform.localScale;
-        theScale.x = theScale.x * -1;
-        gameObject.transform.localScale = theScale;
-        speed = speed*-1;
-        //gameObject.GetComponent<Rigidbody2D>().velocity *= -1;
+        speed = Random.Range(1f, 4f);
+        if (isRight)
+        {
+            speed *= -1;
+            var theScale = gameObject.transform.localScale;
+            theScale.x = theScale.x*-1;
+            gameObject.transform.localScale = theScale;
+        }
+
     }
 
     public virtual void Move()
     {
-        gameObject.transform.position += new Vector3(speed, 0) * Time.deltaTime;
     }
 
     public virtual void Attack()
     {
-        speed = 0;
+        isMoving = false;
         _anim.SetTrigger("isAttack");
 
         //gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -53,6 +57,7 @@ public class BaseEnemy : MonoBehaviour {
         if (dieTime <= 0)
         {
             Destroy(gameObject);
+            Debug.Log("destroy");
         }
     }
 
@@ -62,15 +67,10 @@ public class BaseEnemy : MonoBehaviour {
         {
             Attack();
         }
-
-        if (other.tag == "Ground")
-        {
-            Flip();
-        }
-
         if (other.tag == "Sword")
         {
-            other.GetComponentInParent<PlayerController>().enemy.Add(gameObject.GetComponent<Enemy>());
+            PlayerController player = other.GetComponentInParent<PlayerController>();
+            Attacked(player);
         }
 
         if (other.tag == "HitBox")
@@ -86,5 +86,11 @@ public class BaseEnemy : MonoBehaviour {
         {
             player.Hurt();
         }
+    }
+
+    public virtual void Attacked(PlayerController other)
+    {
+        health--;
+        other.GetComponentInParent<PlayerController>().enemy.Add(gameObject.GetComponent<BaseEnemy>());
     }
 }

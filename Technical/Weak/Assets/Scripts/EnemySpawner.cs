@@ -60,6 +60,22 @@ public class EnemySpawner : MonoBehaviour
             Transform pos = RandomSpawn();
             GameObject instance =
                 Instantiate( objectE, pos.position , Quaternion.identity) as GameObject;
+            //if (pos.name == "Right")
+            //{
+            //    instance.GetComponent<BaseEnemy>().Flip();
+            //    Debug.Log("vo");
+            //}
+            BaseEnemy e = instance.GetComponent<BaseEnemy>();
+            if (e != null && pos.name == "Right")
+            {
+                e.Flip(true);
+            }
+            else
+            {
+                e.Flip(false);
+            }
+            
+
             number--;
         }
         
@@ -67,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
 
     GameObject RandomEnemy()
     {
-        int typeE = Random.Range(1, 2);
+        int typeE = Random.Range(1, 3);
         TypeEnemy t = (TypeEnemy) typeE;
         for (int i = 0; i < listEnemy.Count; i++)
         {

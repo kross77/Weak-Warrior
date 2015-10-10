@@ -7,7 +7,7 @@ public class Enemy : BaseEnemy
     void Start()
     {
         _anim = gameObject.GetComponent<Animator>();
-        speed = Random.Range(1f, 4f);
+        
         health = 1;
     }
     void Update()
@@ -16,9 +16,14 @@ public class Enemy : BaseEnemy
         Move();
     }
 
-    public override void Attack()
+    public override void Move()
     {
-        base.Attack();
-        Debug.Log("attack");
+        if (isMoving)
+            gameObject.transform.position += new Vector3(speed, 0) * Time.deltaTime;
+    }
+
+    public override void Flip(bool isRight)
+    {
+        base.Flip(isRight);
     }
 }
