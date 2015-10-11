@@ -6,13 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     public int health = 3;
     public bool facingRight = true;
-    //public bool IsHit = false;
     public bool isHurt = false;
     public float immortalTime = 0;
     public float frezeTime = 0f;
     public bool flipable = true;
+    public List<BaseEnemy> enemy;
+    public GameObject checkPoint;
+    public float speed = 10f;
+    public bool isMoving = false;
+
+    private Vector3 _prePosition;
     private Animator _anim;
-    public List<BaseEnemy> enemy; 
 	// Use this for initialization
 	void Start () {
 	    _anim = gameObject.GetComponent<Animator>();
@@ -32,6 +36,11 @@ public class PlayerController : MonoBehaviour
 	    {
             _anim.SetBool("isMissed", false);
 	    }
+	    if (isMoving)
+	    {
+            transform.position += new Vector3(speed, 0,0) * Time.deltaTime;
+            Debug.Log("chay");
+	    }
 	}
 
     public void Flip()
@@ -45,6 +54,11 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.tag == "CheckPoint")
+        {
+            transform.position = checkPoint.transform.position;
+            Debug.Log("checkPoint");
+        }
     }
 
     public void Hurt()
@@ -91,5 +105,15 @@ public class PlayerController : MonoBehaviour
             }
         }
         enemy.Clear();
+    }
+
+    void UseSkill()
+    {
+        _prePosition = transform.position;
+        if (!facingRight)
+        {
+            speed = -speed;
+        }
+        isMoving = true;
     }
 }

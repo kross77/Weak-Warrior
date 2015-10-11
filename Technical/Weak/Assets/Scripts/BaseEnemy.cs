@@ -25,7 +25,7 @@ public class BaseEnemy : MonoBehaviour {
 
     public virtual void Flip(bool isRight)
     {
-        speed = Random.Range(1f, 4f);
+        speed = Random.Range(1f, 3f);
         if (isRight)
         {
             speed *= -1;
@@ -45,7 +45,6 @@ public class BaseEnemy : MonoBehaviour {
         isMoving = false;
         _anim.SetTrigger("isAttack");
 
-        //gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 
     public virtual void Die()
